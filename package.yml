@@ -1,7 +1,7 @@
 name: xPagination
 author: udithaatukorala
 category: Interface
-tags: [animation, canvas]
+tags: [animation, canvas, pagination]
 #docs: http://url.to.docs
 #demo: http://url.to.demo
-current: 0.1
+current: 1.0
