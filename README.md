@@ -70,13 +70,13 @@ Class: xPagination
 Fired upon a page change
 
 
-#### Signature:
+##### Signature:
 
 	#JS
 	onPagechange(element, page)
 
 
-#### Arguments
+##### Arguments:
 
 1. element - (*element*) Element which is out of date after a page change
 2. page - (*integer*) The page number for the outdated page
@@ -97,24 +97,26 @@ Fired upon a page change
 	);
 
 
-xPagination method: attach
---------------------------
+
+### Methods:
+
+#### attach()
 
 Attach container elements to an instance.
 
-### Syntax:
+##### Syntax:
 
 	pagination.attach(el_left, el_active, el_right);
 
 
-### Arguments:
+##### Arguments:
 
 1. el_left: (*element*) Left (or top) container element
 2. el_active: (*element*) Active container element
 3. el_right: (*element*) Right (or bottom) container element
 
 
-### Returns:
+##### Returns:
 
 - boolean
 
