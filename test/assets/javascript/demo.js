@@ -21,6 +21,7 @@ window.addEvent('domready', function(){
 		$('pag-content-03'),
 		data,
 		{
+			records_per_page: 2,
 			onPagechange: function( element, page ) {
 				console.log('[options]: load "' + element.id +  '" with page ' + page );
 			}
@@ -39,6 +40,10 @@ window.addEvent('domready', function(){
 
 	pagination.addEvent( 'pagechange', function( element, page ){
 		console.log('[event handler]: load "' + element.id +  '" with page ' + page );
+	});
+
+	pagination.addEvent( 'exhausted', function() {
+		console.log( 'exhausted' );
 	});
 
 });
