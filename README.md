@@ -24,11 +24,11 @@ use the next() / previous() methods to navigate through pages.
 
 	#JS
 	// initialise
-	var pagination = new xPagination({
-		element_left   : $('pag-content-01'),
-		element_active : $('pag-content-02'),
-		element_right  : $('pag-content-03')
-	});
+	var pagination = new xPagination(
+		$('pag-content-01'),
+		$('pag-content-02'),
+		$('pag-content-03')
+	);
 
 	// handle the pagechange event
 	pagination.addEvent( 'pagechange', function( element, page ){
@@ -47,19 +47,19 @@ Class: xPagination
 ### Syntax:
 
 	#JS
-	var pagination = new xPagination([options]);
+	var pagination = new xPagination([el_left, el_active, el_right[, options]]);
 
 
 ### Arguments:
 
-1. options: (*object*) The options object
+1. el_left: (*element*) Left (or top) container element
+2. el_active: (*element*) Active container element
+3. el_right: (*element*) Right (or bottom) container element
+4. options: (*object*, optional) The options object
 
 
 ### Options:
 
-- element_left: (*element*) Left container element
-- element_active: (*element*) Active container element
-- element_right: (*element*) Right container element
 - pages: (*integer*, defaults to 3) Number of pages to paginate
 
 
@@ -78,18 +78,45 @@ Fired upon a page change
 
 #### Arguments
 
-1. element - (element) Element which is out of date after a page change
-2. page - (integer) The page number for the outdated page
+1. element - (*element*) Element which is out of date after a page change
+2. page - (*integer*) The page number for the outdated page
 
 
 ### Example:
 
 	#JS
-	var pagination = new xPagination({
-		element_left   : $('pag-content-01'),
-		element_active : $('pag-content-02'),
-		element_right  : $('pag-content-03'),
-		onPagechange: function( element, page ) {
-			// load content into the outdated page
+	var pagination = new xPagination(
+		$('pag-content-01'),
+		$('pag-content-02'),
+		$('pag-content-03'),
+		{
+			onPagechange: function( element, page ) {
+				// load content into the outdated page
+			}
 		}
-	});
+	);
+
+
+xPagination method: attach
+--------------------------
+
+Attach container elements to an instance.
+
+### Syntax:
+
+	pagination.attach(el_left, el_active, el_right);
+
+
+### Arguments:
+
+1. el_left: (*element*) Left (or top) container element
+2. el_active: (*element*) Active container element
+3. el_right: (*element*) Right (or bottom) container element
+
+
+### Returns:
+
+- boolean
+
+
+
