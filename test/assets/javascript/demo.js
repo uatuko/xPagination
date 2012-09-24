@@ -1,13 +1,13 @@
 
 var data = {
 	total: 75,
-	template: 'template string',
+	template: 'id: {{id}}, name: {{name}}, age: {{age}}',
 	data: [
-		{name: "John Smith", age: 26},
-		{name: "Johny Smith", age: 23},
-		{name: "John Smithy", age: 24},
-		{name: "Johny Smithy", age: 25},
-		{name: "Jo Smith", age: 27}
+		{id:  1, name: "John Smith", age: 26},
+		{id:  2, name: "Johny Smith", age: 23},
+		{id:  3, name: "John Smithy", age: 24},
+		{id:  4, name: "Johny Smithy", age: 25},
+		{id:  5, name: "Jo Smith", age: 27}
 	]
 };
 
@@ -15,10 +15,10 @@ var pagination = {};
 
 window.addEvent('domready', function(){
 
-	pagination = new xPagination.JSON(
-		$('pag-content-01'),
-		$('pag-content-02'),
-		$('pag-content-03'),
+	pagination = new xPagination.JSON.mustache(
+		$('container-left'),
+		$('container-active'),
+		$('container-right'),
 		data,
 		{
 			records_per_page: 2,

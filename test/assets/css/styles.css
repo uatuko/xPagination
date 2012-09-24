@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.pag-container {
+.pagination-window {
 	border: 1px solid #FFEBFF;
 	height: 500px;
 	margin: 0 auto;
@@ -10,7 +10,7 @@
 	width: 600px;
 }
 
-#pag-content-01 {
+#container-left {
 	background-color: #9DDEFF;
 	height: 500px;
 	left: -700px;
@@ -18,14 +18,14 @@
 	width: 600px;
 }
 
-#pag-content-02 {
+#container-active {
 	background-color: #D6FFAC;
 	height: 500px;
 	position: absolute;
 	width: 600px;
 }
 
-#pag-content-03 {
+#container-right {
 	background-color: #FFCDB4;
 	height: 500px;
 	left: 700px;
