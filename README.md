@@ -163,7 +163,7 @@ Class: xPagination.JSON
 
 #### pageload:
 
-	Fired when a page is loaded (or request to be loaded)
+Fired when a page is loaded (or request to be loaded)
 
 ##### Signature:
 
@@ -178,8 +178,7 @@ Class: xPagination.JSON
 
 #### exhausted:
 
-	Fired when the data source is exhausted and there is no more data to
-	be loaded into pages.
+Fired when the data source is exhausted and there is no more data to be loaded into pages.
 
 ##### Signature:
 
@@ -231,7 +230,8 @@ mustache templates.
 ### Events:
 
 #### inject:
-	Fired when a page is appended with a record
+
+Fired when a page is appended with a record
 
 ##### Signature:
 
