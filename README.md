@@ -25,9 +25,9 @@ use the next() / previous() methods to navigate through pages.
 	#JS
 	// initialise
 	var pagination = new xPagination(
-		$('pag-content-01'),
-		$('pag-content-02'),
-		$('pag-content-03')
+		$('container-left'),
+		$('container-active'),
+		$('container-right'),
 	);
 
 	// handle the pagechange event
@@ -39,6 +39,21 @@ use the next() / previous() methods to navigate through pages.
 	pagination.next();
 	pagination.previous();
 
+
+Maybe a more useful example is to use the xPagination.JSON.mustache class
+which will load the outdated pages with JSON data and use Mustache template
+parser to convert each JSON data record into a DOM record.
+
+	#JS
+	pagination = new xPagination.JSON.mustache(
+		$('container-left'),
+		$('container-active'),
+		$('container-right'),
+		data,
+		{
+			records_per_page: 2
+		}
+	);
 
 
 Class: xPagination
@@ -86,9 +101,9 @@ Fired upon a page change
 
 	#JS
 	var pagination = new xPagination(
-		$('pag-content-01'),
-		$('pag-content-02'),
-		$('pag-content-03'),
+		$('container-left'),
+		$('container-active'),
+		$('container-right'),
 		{
 			onPagechange: function( element, page ) {
 				// load content into the outdated page
@@ -121,4 +136,123 @@ Attach container elements to an instance.
 - boolean
 
 
+
+Class: xPagination.JSON
+-----------------------
+
+### Syntax:
+
+	#JS
+	var pagination = new xPagination.JSON(el_left, el_active, el_right, obj_json[, options]);
+
+
+### Arguments:
+
+1. el_left: (*element*) Left (or top) container element
+2. el_active: (*element*) Active container element
+3. el_right: (*element*) Right (or bottom) container element
+4. obj_json: (*object*) JSON data object
+5. options: (*object*, optional) The options object
+
+
+### Options:
+- records_per_page: (*integer*, defaults to 10) Number of records per page
+
+
+### Events:
+
+#### pageload:
+
+	Fired when a page is loaded (or request to be loaded)
+
+##### Signature:
+
+	#JS
+	onPageload(element, page)
+
+##### Arguments:
+
+1. element - (*element*) Element which is loaded with the page content
+2. page - (*integer*) The page number for the loaded page
+
+
+#### exhausted:
+
+	Fired when the data source is exhausted and there is no more data to
+	be loaded into pages.
+
+##### Signature:
+
+	#JS
+	onExhausted()
+
+
+### Example:
+
+	#JS
+	var pagination = new xPagination.JSON(
+		$('container-left'),
+		$('container-active'),
+		$('container-right'),
+		data,
+		{
+			records_per_page: 2,
+			onPagechange: function( element, page ) {
+				// load content into the outdated page
+			}
+		}
+	);
+
+
+
+Class: xPagination.JSON.mustache
+--------------------------------
+
+xPagination.JSON.mustache updates the page content using JSON data and
+mustache templates.
+
+### Syntax:
+
+	#JS
+	var pagination = new xPagination.JSON.mustache(el_left, el_active, el_right, obj_json[, options]);
+
+### Arguments:
+
+1. el_left: (*element*) Left (or top) container element
+2. el_active: (*element*) Active container element
+3. el_right: (*element*) Right (or bottom) container element
+4. obj_json: (*object*) JSON data object
+5. options: (*object*, optional) The options object
+
+### Options:
+- template: (*string*) Mustache template
+
+
+### Events:
+
+#### inject:
+	Fired when a page is appended with a record
+
+##### Signature:
+
+	#JS
+	onInject(element, data);
+
+##### Arguments:
+
+1. element - (*element*) Element which is injected withe the record
+2. data - (*object*) JSON data object which is used to create the record
+
+### Example:
+
+	#JS
+	var pagination = new xPagination.JSON.mustache(
+		$('container-left'),
+		$('container-active'),
+		$('container-right'),
+		data,
+		{
+			records_per_page: 2
+		}
+	);
 
